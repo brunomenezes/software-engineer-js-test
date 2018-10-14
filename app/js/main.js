@@ -1,29 +1,30 @@
 const imageService = require('./services/imageService');
 const logService = require('./services/logService');
-const stateService = require('./services/stateService');
 const canvasService = require('./services/canvasService');
 const mathService = require('./services/mathService');
+const interactionService = require('./services/interactionService');
 
 const fileSelector = document.getElementById("fileSelector");
 const generateButton = document.getElementById("generateButton");
 
-canvasService.initialize();
+canvasService
+    .initialize()
+    .then(interactionService.initialize);
 
 fileSelector.onchange = (e) => {
     imageService
         .loadImage(e)
         .then(
-            img => {
+            ({img, fileName}) => {
                 let imageData = {
+                    id: fileName,
                     width: mathService.pixelsToInches(img.naturalWidth),
                     height: mathService.pixelsToInches(img.naturalHeight),
                     img,
                     x:0,
                     y:0
                 };
-
-                stateService.setState({photo:imageData});
-                canvasService.render(stateService.getState());
+                canvasService.render(imageData);
                 logService.info("Loaded Image w/dimensions " + imageData.width + " x " + imageData.height);
             },
             err => logService.error(err.message || err)

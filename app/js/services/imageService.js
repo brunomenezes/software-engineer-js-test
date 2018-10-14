@@ -12,9 +12,11 @@ function loadImage(e) {
            if(isFileTypeValid(file)) {
                readAsDataUrl(file)
                    .then(createImage)
-                   .then(resolve);
+                   .then((img) => {
+                       resolve({img, fileName: file.name});
+                   });
            } else {
-               reject(`Not a valid Image file: ${file.name}`);
+               reject(`Not a valid file type: ${file.name}`);
            }
         });
     });
