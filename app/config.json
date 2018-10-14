@@ -1,0 +1,11 @@
+{
+  "canvas": {
+    "width":15,
+    "height":10,
+  },
+  "supportedFiles": [
+    "image/jpeg",
+    "image/png",
+    "image/gif"
+  ]
+}
