@@ -12,6 +12,10 @@ body {
   box-sizing: border-box;
 }
 
+canvas {
+  border: solid 1px black;
+}
+
 .column {
   width: 48%;
   margin: .5%;
