@@ -6,6 +6,40 @@ body {
   height: 100%;
 }
 
+.btn-group {
+  display: flex;
+  flex-direction: row;
+
+  &.row-inverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.btn {
+  margin: 3px;
+  padding: 10px 13px;
+  background:transparent;
+  border-radius:3px;
+  border: 0.5px #848484 solid;
+  font-size: 13px;
+
+  &:focus, &:hover {
+    outline: none;
+    border-color: #000;
+  }
+
+  &.success {
+    background-color: $success;
+    color: white;
+  }
+
+  &.info {
+    background-color: $info;
+    color: white;
+  }
+}
+
+
 #imageContainer,
 #debugContainer {
   padding: 1em;
@@ -31,9 +65,7 @@ canvas {
 }
 
 #imageContainer {
-  img {
-    width: 100%;
-  }
+
 }
 
 #debugContainer {
