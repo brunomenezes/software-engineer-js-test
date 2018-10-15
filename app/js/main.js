@@ -33,8 +33,9 @@ function initialize() {
                 err => logService.error(err.message || err)
             );
     };
+
+    logService.info('Click and Drag the image to position as desired.');
+    logService.info('Scroll to scale up and down.');
 }
 
 initialize();
-
-logService.log("Test application ready");

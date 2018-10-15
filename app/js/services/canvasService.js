@@ -63,7 +63,7 @@ function coverWholeCanvas({x, y, width, height}) {
     const isHeightSmaller = height < CANVAS_H_INCHES;
 
     if (isHeightSmaller) {
-        ({height, width}) = updateMeasureByHeight(aspectRatio);
+        ({height, width} = updateMeasureByHeight(aspectRatio));
     }
 
     if (x > 0) x = 0;
