@@ -54,24 +54,37 @@ function scaleProperties(properties, scale) {
 
 function coverWholeCanvas({x, y, width, height}) {
     const aspectRatio = width / height;
+    const isWidthSmaller = width < CANVAS_W_INCHES;
 
-    if (width < CANVAS_W_INCHES) {
-        width = CANVAS_W_INCHES;
-        height = width / aspectRatio;
+    if (isWidthSmaller) {
+        ({width , height} = updateMeasureByWidth(aspectRatio));
     }
 
-    if (height < CANVAS_H_INCHES) {
-        height = CANVAS_H_INCHES;
-        width = height * aspectRatio;
+    const isHeightSmaller = height < CANVAS_H_INCHES;
+
+    if (isHeightSmaller) {
+        ({height, width}) = updateMeasureByHeight(aspectRatio);
     }
 
     if (x > 0) x = 0;
     if (y > 0) y = 0;
 
-    if (width - CANVAS_W_INCHES < -x) x = CANVAS_W_INCHES - width;
-    if (height - CANVAS_H_INCHES < -y) y = CANVAS_H_INCHES - height;
+    if (width - CANVAS_W_INCHES < Math.abs(x)) x = CANVAS_W_INCHES - width;
+    if (height - CANVAS_H_INCHES < Math.abs(y)) y = CANVAS_H_INCHES - height;
 
     return { x, y, width, height };
+}
+
+function updateMeasureByWidth(aspectRatio){
+    let width = CANVAS_W_INCHES;
+    let height = width / aspectRatio;
+    return {width, height};
+}
+
+function updateMeasureByHeight(aspectRatio) {
+    let height = CANVAS_H_INCHES;
+    let width = height * aspectRatio;
+    return {height, width};
 }
 
 function getCanvasMeasure() {
