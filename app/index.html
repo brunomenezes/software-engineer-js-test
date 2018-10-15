@@ -7,11 +7,7 @@
         <link rel="stylesheet" href="./app/css/styles.css" media="all" />
     </head>
     <body>
-        <h1>Test application</h1>
-        <p>
-            Your application is ready. There should be a message in your browsers
-            console indicating the JavaScript application has loaded.
-        </p>
+        <h1>Canvas Test application</h1>
         <form action="#">
             <fieldset>
                 <label for="fileSelector">Select an Image file</label>
@@ -23,7 +19,11 @@
                 <!-- will hold photos -->
                 <canvas id="canvasEl"></canvas>
             </div>
-            <button id="generateButton">Generate!</button>
+
+            <div class="btn-group row-inverse">
+                <button id="saveBtn" class="btn success">Save</button>
+                <button id="importBtn" class="btn">Import</button>
+            </div>
         </div>
         <div class="column right">
             <div id="debugContainer">
